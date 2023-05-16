@@ -16,6 +16,7 @@ type DictRequest struct {
 	UserID    string `json:"user_id"`
 }
 
+// https://oktools.net/json2go
 type DictResponse struct {
 	Rc   int `json:"rc"`
 	Wiki struct {
@@ -45,6 +46,8 @@ func query(word string) {
 		log.Fatal(err)
 	}
 	data := bytes.NewReader(buf)
+
+	// https://curlconverter.com/go/
 	req, err := http.NewRequest("POST", "https://api.interpreter.caiyunai.com/v1/dict", data)
 	if err != nil {
 		log.Fatal(err)
